@@ -1,0 +1,5 @@
+{
+	"rust-analyzer.cargo.allTargets": false,
+	"rust-analyzer.cargo.target": "thumbv8m.main-none-eabihf",
+	"rust-analyzer.cargo.features": ["defmt", "embedded-hal-async"]
+}
