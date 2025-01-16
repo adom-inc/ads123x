@@ -192,7 +192,7 @@ where
     async fn read_internal(&mut self, delay: &mut impl embedded_hal_async::delay::DelayNs) -> i32 {
         self.sclk.set_low().unwrap();
 
-        self.dout.wait_for_high().await.unwrap();
+        self.dout.wait_for_low().await.unwrap();
 
         let mut data = 0u32;
 
@@ -432,8 +432,8 @@ where
             self.a0.is_set_high().unwrap(),
             self.a1.is_set_high().unwrap(),
         ) {
-            (true, false) => ADS1234Channel::AIN1,
-            (false, false) => ADS1234Channel::AIN2,
+            (false, false) => ADS1234Channel::AIN1,
+            (true, false) => ADS1234Channel::AIN2,
             (false, true) => ADS1234Channel::AIN3,
             (true, true) => ADS1234Channel::AIN4,
         };
